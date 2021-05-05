@@ -7,9 +7,6 @@
 namespace pandemic{
 
     class OperationsExpert: public Player {
-        // private:
-        // City city;
-        // Board board;
 
         public:
         OperationsExpert(Board b, City c):Player(b,c){};

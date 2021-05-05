@@ -11,7 +11,6 @@ namespace pandemic
     {
         Board board;
         City city;
-        std::string type;
 
     public:
         Player(Board &b, City c) : board(b), city(c){};

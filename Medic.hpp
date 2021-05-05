@@ -7,9 +7,7 @@
 namespace pandemic{
 
     class Medic: public Player {
-        // private:
-        // City city;
-        // Board board;
+
 
         public:
         Medic(Board b, City c):Player(b,c){};

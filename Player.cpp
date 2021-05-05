@@ -100,4 +100,4 @@ Player &Player::treat(City c)
 
         // throw invalid_argument("illigel treat");
 }
-string Player::role() { return type; }
+string Player::role() { return "TLV"; }

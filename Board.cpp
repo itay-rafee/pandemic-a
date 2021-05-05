@@ -6,7 +6,7 @@
 #include <iostream>
 
 using namespace std;
-static map<City, set<City>> connections{
+static map<City, set<City>> neighbors{
     { Algiers, {Madrid, Paris, Istanbul, Cairo } },
     { Atlanta, {Chicago, Miami, Washington } },
     { Baghdad, {Tehran, Istanbul, Cairo, Riyadh, Karachi } },
@@ -55,17 +55,12 @@ static map<City, set<City>> connections{
     { Tehran, {Baghdad, Moscow, Karachi, Delhi } },
     { Tokyo, {Seoul, Shanghai, Osaka, SanFrancisco } },
     { Washington, {Atlanta, NewYork, Montreal, Miami } }};
-map<City, int> diseas_cubes;
-set<City> research_stations;
+map<City, int> cubesOfDiseas;
+set<City> researchStations;
 
 namespace pandemic
 {
 
-    // static std::map<City, std::set<City>> connections;
-    // std::map<City, int> diseas_cubes;
-    // std::set<City> research_stations;
-    // std::set<Color> cure_discoverd;
-    // bool cured[4] = {0};
 
     void Board::remove_cures()
     {
@@ -73,11 +68,11 @@ namespace pandemic
 
     int &Board::operator[](City c)
     {
-        return diseas_cubes[c];
+        return cubesOfDiseas[c];
     }
     bool Board::is_clean()
     {
-        for (auto dis : diseas_cubes)
+        for (auto dis : cubesOfDiseas)
         {
             if (dis.second > 0)
             {
@@ -88,9 +83,9 @@ namespace pandemic
     }
     bool Board::is_connected(City &c1, City &c2)
     {
-        if (connections.count(c1) != 0)
+        if (neighbors.count(c1) != 0)
         {
-            if (connections[c1].count(c2) != 0)
+            if (neighbors[c1].count(c2) != 0)
             {
                 return true;
             }
